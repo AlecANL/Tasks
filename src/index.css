@@ -1,13 +1,107 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+.App {
+  width: 100%;
+  background: linear-gradient(
+    31deg,
+    rgba(45, 83, 203, 1) 0%,
+    rgba(25, 82, 210, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+.l-container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+  padding: 1rem;
+}
+.task-template {
+  height: 100vh;
+  text-align: center;
+}
+.task-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.input {
+  border: none;
+  padding: 1rem;
+  width: 100%;
+  margin: 0.5rem;
+  border-radius: 0.3rem;
+}
+.btn {
+  border: none;
+  padding: 1rem;
+}
+.btn-task {
+  width: 100%;
+  background: #d7e3ff;
+  border-radius: 0.3rem;
+}
+
+.task-container {
+  background: #fff;
+  width: 80%;
+  padding: 2rem;
+  border-radius: 0.3rem;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+.taskName {
+  font-weight: 500;
+  text-decoration: underline;
+}
+.taskDescription {
+  margin-top: 1rem;
+}
+.btn-delete {
+  width: 100%;
+  margin-top: 2rem;
+  background: rgb(255, 91, 91);
+  color: #fff;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+}
+.tasks {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media screen and (min-width: 500px) {
+  .tasks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .btn-task {
+    width: 30%;
+    background: #d7e3ff;
+    border-radius: 0.3rem;
+  }
+  .input {
+    border: none;
+    padding: 1rem;
+    width: 30%;
+    margin: 0.5rem;
+    border-radius: 0.3rem;
+  }
 }

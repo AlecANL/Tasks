@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useState, useEffect } from 'react';
+import TemplateTask from './components/TemplateTask';
+import Task from './components/Task';
+const App = () => {
+  let sateTaskInit = JSON.parse(localStorage.getItem('Task'));
+  if (!sateTaskInit) {
+    sateTaskInit = [];
+  }
 
-function App() {
+  const [addTask, setAddTask] = useState(sateTaskInit);
+  useEffect(() => {
+    if (sateTaskInit) {
+      localStorage.setItem('Task', JSON.stringify(addTask));
+    } else {
+      localStorage.setItem('Task', JSON.stringify([]));
+    }
+  }, [sateTaskInit, addTask]);
+
+  const addNewTask = (task) => {
+    setAddTask([...addTask, task]);
+  };
+  const deleteTask = (id) => {
+    const taskDelete = addTask.filter((task) => task.id !== id);
+    setAddTask(taskDelete);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <div className='App'>
+        <div className='task-template'>
+          <TemplateTask addNewTask={addNewTask} />
+          <div className='tasks'>
+            {addTask.map((taskItem) => (
+              <Task key={taskItem.id} newTask={taskItem} deleteTask={deleteTask} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </Fragment>
   );
-}
+};
 
 export default App;
